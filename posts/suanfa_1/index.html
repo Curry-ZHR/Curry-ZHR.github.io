@@ -1,0 +1,250 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>实验报告_1 | Zzhr's Blog</title><meta name="author" content="Harry Zhang"><meta name="copyright" content="Harry Zhang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="实验二——串匹配问题一、实验题目:给定一个文本，在该文本中查找并定义任意给定字符串。  二、实验目的: 深刻理解并掌握蛮力法的设计思想 提高应用蛮力法设计算法的技能 用蛮力法设计的算法，一般来说，经过适度努力，都可以对算法的第一个版本进行一定程度的改良，改进其时间性能   三、实验要求: 实现BF算法 实现KMP算法和BM算法 分析算法时间复杂性，设计实验程序验证分析结果   四、算法实现分析及结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实验报告_1">
+<meta property="og:url" content="http://example.com/posts/suanfa_1/index.html">
+<meta property="og:site_name" content="Zzhr&#39;s Blog">
+<meta property="og:description" content="实验二——串匹配问题一、实验题目:给定一个文本，在该文本中查找并定义任意给定字符串。  二、实验目的: 深刻理解并掌握蛮力法的设计思想 提高应用蛮力法设计算法的技能 用蛮力法设计的算法，一般来说，经过适度努力，都可以对算法的第一个版本进行一定程度的改良，改进其时间性能   三、实验要求: 实现BF算法 实现KMP算法和BM算法 分析算法时间复杂性，设计实验程序验证分析结果   四、算法实现分析及结">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/demo.JPG">
+<meta property="article:published_time" content="2023-02-23T14:37:51.442Z">
+<meta property="article:modified_time" content="2023-02-23T14:46:09.454Z">
+<meta property="article:author" content="Harry Zhang">
+<meta property="article:tag" content="实验报告">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/demo.JPG"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/posts/suanfa_1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '实验报告_1',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-23 22:46:09'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/demo.JPG" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Zzhr's Blog"><span class="site-name">Zzhr's Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">实验报告_1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-23T14:37:51.442Z" title="发表于 2023-02-23 22:37:51">2023-02-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-02-23T14:46:09.454Z" title="更新于 2023-02-23 22:46:09">2023-02-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="实验报告_1"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="实验二——串匹配问题"><a href="#实验二——串匹配问题" class="headerlink" title="实验二——串匹配问题"></a>实验二——串匹配问题</h1><h3 id="一、实验题目"><a href="#一、实验题目" class="headerlink" title="一、实验题目:"></a>一、实验题目:</h3><p><strong>给定一个文本，在该文本中查找并定义任意给定字符串。</strong></p>
+<hr>
+<h3 id="二、实验目的"><a href="#二、实验目的" class="headerlink" title="二、实验目的:"></a>二、实验目的:</h3><ul>
+<li><strong>深刻理解并掌握蛮力法的设计思想</strong></li>
+<li><strong>提高应用蛮力法设计算法的技能</strong></li>
+<li><strong>用蛮力法设计的算法，一般来说，经过适度努力，都可以对算法的第一个版本进行一定程度的改良，改进其时间性能</strong></li>
+</ul>
+<hr>
+<h3 id="三、实验要求"><a href="#三、实验要求" class="headerlink" title="三、实验要求:"></a>三、实验要求:</h3><ul>
+<li><strong>实现BF算法</strong></li>
+<li><strong>实现KMP算法和BM算法</strong></li>
+<li><strong>分析算法时间复杂性，设计实验程序验证分析结果</strong></li>
+</ul>
+<hr>
+<h3 id="四、算法实现分析及结果"><a href="#四、算法实现分析及结果" class="headerlink" title="四、算法实现分析及结果:"></a>四、算法实现分析及结果:</h3><ul>
+<li><strong>BF算法</strong></li>
+</ul>
+<p>​    得到主串和模式串后，利用循环语句将模式串逐个字符与主串进行比较，匹配结束时，如果找到了主串的子串与模式串相同，则返回<strong>主串下标</strong>，如果没找到相同串，则返回**-1**.</p>
+<ul>
+<li><strong>BF算法核心部分代码</strong></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">BF</span><span class="params">(<span class="type">char</span> S[],<span class="type">char</span> T[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> index=<span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>((S[i]!=<span class="string">&#x27;\0&#x27;</span>)&amp;&amp;(T[j]!=<span class="string">&#x27;\0&#x27;</span>))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(S[i]==T[j])</span><br><span class="line">        &#123;</span><br><span class="line">            i++,j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            index++;</span><br><span class="line">            i=index;</span><br><span class="line">            j=<span class="number">0</span>;            <span class="comment">//主串回溯，模式串直接回溯到0</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(T[j]==<span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> index+<span class="number">1</span>;     <span class="comment">//返回子串开始位置 不是返回下标</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>时间复杂度分析</strong>        </li>
+</ul>
+<p>$$<br>平均比较次数:(m*(n-m+2))/2<br>$$</p>
+<p>$$<br>时间复杂度:O(m*n)<br>$$</p>
+<ul>
+<li><strong>BF算法实验结果</strong></li>
+</ul>
+<p><img src="1.png"></p>
+<hr>
+<ul>
+<li><strong>KMP算法</strong></li>
+</ul>
+<p>KMP算法只需要将主串扫描一遍，通过模式串的回溯来进行匹配主串，需要借助一个辅助数组next，<strong>next数组用于指明下一次回溯的位置</strong>。遍历过程中如果遇到模式串与主串字符不匹配，主串下标不变，在模式串中寻找已匹配模式串部分，查看是否有相同最大前后缀。如果有则直接将前缀部分对齐后缀部分，进行模式串的移动，如果没有则将整个模式串向右移动一位。</p>
+<ol>
+<li>如果s[i]==T[j] 继续比较S、T下一对字符</li>
+<li>否则将下标j回溯到next[j]，j=next[j]</li>
+<li>若j==-1，则将下标i，j分别+1，准备下一次比较</li>
+<li>若T中所有字符均比较完毕，则返回本趟匹配的返回位置 </li>
+</ol>
+<p><font color="red">KMP算法的关键点：如何找到<strong>最大真前缀</strong>，如何为<strong>next数组赋值</strong>，怎么寻找已匹配模式串的前后缀</font></p>
+<p><img src="2.png"></p>
+<ul>
+<li><p><strong>KMP算法核心代码</strong></p>
+</li>
+<li><ul>
+<li><p>求next数组</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方法1</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">GetNext</span><span class="params">(<span class="type">char</span> T[],<span class="type">int</span> *next)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    next[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">    <span class="type">int</span> k=<span class="number">-1</span>,j=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(j&lt;<span class="built_in">strlen</span>(T))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>((k==<span class="number">-1</span>)||(T[j]==T[k]))</span><br><span class="line">        &#123;</span><br><span class="line">            j++;</span><br><span class="line">            k++;</span><br><span class="line">            next[j]=k;      <span class="comment">//为next数组赋值</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            k=next[k];      <span class="comment">//让k回溯</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;							<span class="comment">//快速求next数组方法，时间复杂度低</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方法2</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">GetNext</span><span class="params">(<span class="type">char</span> T[],<span class="type">int</span> *next)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> i,j,len;</span><br><span class="line">    next[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>(j=<span class="number">1</span>;T[j]!=<span class="string">&#x27;\0&#x27;</span>;j++)			<span class="comment">//依次求next[j]</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(len=j<span class="number">-1</span>;len&gt;=<span class="number">1</span>;len--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;len;i++)</span><br><span class="line">                <span class="keyword">if</span>(T[i]!=T[j-len+i])<span class="keyword">break</span>;		<span class="comment">//依次比较T[0]~T[len-1]与T[j-len]~T[j-1]</span></span><br><span class="line">            <span class="keyword">if</span>(i==len)</span><br><span class="line">            &#123;</span><br><span class="line">                next[j]=len;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(len&lt;<span class="number">1</span>)</span><br><span class="line">            next[j]=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;							<span class="comment">//直接蛮力法求模式串中相同前后缀的长度</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><ul>
+<li><strong>KMP代码</strong></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">KMP</span><span class="params">(<span class="type">char</span> S[],<span class="type">char</span> T[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> *next=<span class="keyword">new</span> <span class="type">int</span>[<span class="built_in">strlen</span>(T)];</span><br><span class="line">    <span class="built_in">GetNext</span>(T,next);                    <span class="comment">//先获得辅助数组</span></span><br><span class="line">    <span class="keyword">while</span>(S[i]!=<span class="string">&#x27;\0&#x27;</span>&amp;&amp;T[j]!=<span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(S[i]==T[j])</span><br><span class="line">        &#123;</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            j=next[j];                  <span class="comment">//j回溯到模式串和主串相同部分字符的下一位</span></span><br><span class="line">            <span class="keyword">if</span>(j==<span class="number">-1</span>)                   <span class="comment">//next[0]=-1</span></span><br><span class="line">            &#123;</span><br><span class="line">                i++;</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(T[j]==<span class="string">&#x27;\0&#x27;</span>)                      <span class="comment">//模式串遍历完成</span></span><br><span class="line">        <span class="keyword">return</span> (i-<span class="built_in">strlen</span>(T)+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>时间复杂度分析</strong><br>$$<br>只遍历一次主串:O(n+m)<br>$$</p>
+</li>
+<li><p><strong>KMP算法实验结果</strong></p>
+<p><img src="3.png"></p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><strong>BM算法</strong></li>
+</ul>
+<p>不同于BF、KMP算法的从左向右匹配，BM算法的模式串从右向左匹配。BM算法的两个规则：坏字符规则和好后缀规则。</p>
+<p><strong>坏字符规则：</strong></p>
+<p>​    当文本串中的某个字符跟模式串的某个字符不匹配时，我们称文本串中的这个失配字符为坏字符，此时模式串向右移动。 若”坏字符”不包含在模式串之中，则最右出现位置为-1<br>$$<br>移动位数=坏字符在模式串中的位置-坏字符在模式串中最右出现位置<br>$$<br><strong>好后缀规则：</strong></p>
+<p>​    当字符失配时，模式串后移，模式串与主串匹配的部分就叫好后缀，好后缀有许多个，模式串移动时，我们通常选择最长好后缀，若无法在模式串中找到匹配好后缀，则将好后缀递减。</p>
+<p>$$<br>移动位数=好后缀的位置-搜索词中的上一次出现位置<br>$$<br><img src="4.png"></p>
+<ul>
+<li><strong>BM算法核心代码</strong></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">Pattern</span><span class="params">(string pattern,string target)</span></span>&#123;		<span class="comment">//判断模式串和主串匹配位置函数</span></span><br><span class="line">    <span class="type">int</span> tLen=target.<span class="built_in">length</span>();</span><br><span class="line">    <span class="type">int</span> pLen=pattern.<span class="built_in">length</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(pLen&gt;tLen)       <span class="comment">//模式串比主串长</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> *bad_table=<span class="built_in">build_bad_table</span>(pattern);</span><br><span class="line">    <span class="type">int</span> *good_table=<span class="built_in">build_good_table</span>(pattern);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> i,j;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=pLen<span class="number">-1</span>,j;i&lt;tLen;)&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(j=pLen<span class="number">-1</span>;target[i]==pattern[j];i--,j--)&#123;</span><br><span class="line">            <span class="keyword">if</span>(j==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;匹配成功,位置:&quot;</span>);</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        i+=<span class="built_in">max</span>(good_table[pLen-j-i],bad_table[target[i]]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> *<span class="title">build_bad_table</span><span class="params">(string pattern)</span></span>&#123;       <span class="comment">//返回坏字符  </span></span><br><span class="line">    <span class="type">int</span> table_size=<span class="number">256</span>;</span><br><span class="line">    <span class="type">int</span> *bad_table=<span class="keyword">new</span> <span class="type">int</span>[table_size];</span><br><span class="line">    <span class="type">int</span> pLen=pattern.<span class="built_in">length</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;table_size;i++)&#123;</span><br><span class="line">        bad_table[i]=pLen;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;pLen<span class="number">-1</span>;i++)&#123;</span><br><span class="line">        <span class="type">int</span> k=pattern[i];</span><br><span class="line">        bad_table[k]=pLen<span class="number">-1</span>-i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> bad_table;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> *<span class="title">build_good_table</span><span class="params">(string pattern)</span></span>&#123;          <span class="comment">//返回好后缀</span></span><br><span class="line">    <span class="type">int</span> pLen=pattern.<span class="built_in">length</span>();</span><br><span class="line">    <span class="type">int</span> *good_table=<span class="keyword">new</span> <span class="type">int</span>[pLen];</span><br><span class="line">    <span class="type">int</span> lastPrefixPosition=pLen;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=pLen<span class="number">-1</span>;i&gt;=<span class="number">0</span>;--i)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">isPrefix</span>(pattern,i+<span class="number">1</span>))&#123;</span><br><span class="line">            lastPrefixPosition=i+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        good_table[pLen<span class="number">-1</span>-i]=lastPrefixPosition-i+pLen<span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;pLen<span class="number">-1</span>;++i)&#123;</span><br><span class="line">        <span class="type">int</span> slen=<span class="built_in">suffixLength</span>(pattern,i);</span><br><span class="line">        good_table[slen]=pLen<span class="number">-1</span>-i+slen;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> good_table;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">isPrefix</span><span class="params">(string pattern,<span class="type">int</span> p)</span></span>&#123;	<span class="comment">//寻找好后缀在模式串中的对应前缀</span></span><br><span class="line">    <span class="type">int</span> i,j;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=p,j=<span class="number">0</span>;i&lt;patternLength;++i,++j)&#123;</span><br><span class="line">        <span class="keyword">if</span>(pattern[i]!=pattern[j])</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">suffixLength</span><span class="params">(string pattern,<span class="type">int</span> p)</span></span>&#123; <span class="comment">//返回值是模式串中好后缀与前缀相同字符的个数</span></span><br><span class="line">    <span class="type">int</span> pLen=pattern.<span class="built_in">length</span>();</span><br><span class="line">    <span class="type">int</span> len=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=p,j=pLen<span class="number">-1</span>;i&gt;=<span class="number">0</span>&amp;&amp;pattern[i]==pattern[j];i--,j--)&#123;</span><br><span class="line">        len+=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> len;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>时间复杂度分析</strong></li>
+</ul>
+<p>$$<br>最好情况:O(n)<br>$$</p>
+<p>$$<br>最坏情况：O(m*n)<br>$$</p>
+<h3 id="五、实验感悟"><a href="#五、实验感悟" class="headerlink" title="五、实验感悟"></a>五、实验感悟</h3><p>​    此次实验横向对比了BF、KMP、BM算法。BF算法就是简单地遍历字符串，利用双重for循环实现，虽然思路很简单，但是时间复杂度高，计算速度慢。KMP算法的关键在于设计next数组，以及非常巧妙的采用了指针对主串进行操作而不是对模式串进行操作，通过回溯指针和移动指针来实现匹配效果，较易理解实现且大幅降低时间复杂度。BM算法引入了好后缀和坏字符的概念，通过这两种方式去判断哪种能尽量多的跳过字符寻找目标字符串，这个算法涉及到好后缀和坏字符的判断以及移动长度判断计算等多个函数，相较于前两个算法不易实现，但也是时间复杂度最低的。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Harry Zhang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/posts/suanfa_1/">http://example.com/posts/suanfa_1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Zzhr's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">实验报告</a><a class="post-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/">算法</a></div><div class="post_share"><div class="social-share" data-image="/img/demo.JPG" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/posts/cunchu/" title="分区式存储管理算法模拟"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">分区式存储管理算法模拟</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/demo.JPG" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Harry Zhang</div><div class="author-info__description">终将归予人海</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Curry-ZHR"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Curry-ZHR" target="_blank" title="Github"><i class="fab fa-github"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Welcome to Zzhr's Blog!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E4%BA%8C%E2%80%94%E2%80%94%E4%B8%B2%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">实验二——串匹配问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%9E%E9%AA%8C%E9%A2%98%E7%9B%AE"><span class="toc-number">1.0.1.</span> <span class="toc-text">一、实验题目:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84"><span class="toc-number">1.0.2.</span> <span class="toc-text">二、实验目的:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AE%9E%E9%AA%8C%E8%A6%81%E6%B1%82"><span class="toc-number">1.0.3.</span> <span class="toc-text">三、实验要求:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%88%86%E6%9E%90%E5%8F%8A%E7%BB%93%E6%9E%9C"><span class="toc-number">1.0.4.</span> <span class="toc-text">四、算法实现分析及结果:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%AE%9E%E9%AA%8C%E6%84%9F%E6%82%9F"><span class="toc-number">1.0.5.</span> <span class="toc-text">五、实验感悟</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/suanfa_1/" title="实验报告_1">实验报告_1</a><time datetime="2023-02-23T14:37:51.442Z" title="发表于 2023-02-23 22:37:51">2023-02-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/cunchu/" title="分区式存储管理算法模拟">分区式存储管理算法模拟</a><time datetime="2023-02-21T17:07:24.541Z" title="发表于 2023-02-22 01:07:24">2023-02-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/yemian/" title="页面调度算法模拟">页面调度算法模拟</a><time datetime="2023-02-21T17:06:14.697Z" title="发表于 2023-02-22 01:06:14">2023-02-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/zuoye/" title="作业调度">作业调度</a><time datetime="2023-02-21T15:35:28.024Z" title="发表于 2023-02-21 23:35:28">2023-02-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/55dc0e80/" title="demo1">demo1</a><time datetime="2023-02-21T15:00:56.196Z" title="发表于 2023-02-21 23:00:56">2023-02-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/4a17b156/" title="Hello World">Hello World</a><time datetime="2023-02-21T04:43:57.007Z" title="发表于 2023-02-21 12:43:57">2023-02-21</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Harry Zhang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="{&quot;site_uv&quot;:true,&quot;site_pv&quot;:true,&quot;page_pv&quot;:true}"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/%5Bobject%20Object%5D"></script></div></body></html>

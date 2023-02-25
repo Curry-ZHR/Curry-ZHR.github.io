@@ -1,0 +1,215 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>韵律识别 | Zzhr's Blog</title><meta name="author" content="Harry Zhang"><meta name="copyright" content="Harry Zhang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="对于韵律识别，我们主要找到了两种处理方式。第一种是通过神经网络算法对音频信号进行训练。链接如下：参考博客（第一种方法博主提供了一个非常庞大的数据集，该算法解决的问题主要是识别环境中的不同声音，如鸟叫、汽笛、小孩打闹声等。有点类似于yolov5算法中识别环境中的人、车、房子、手机等，并不是用来进行音乐中的韵律识别。我的理解是韵律识别是音频识别中一个更小的分支，我们应该寻找一个更加精确的算法来解决问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="韵律识别">
+<meta property="og:url" content="http://example.com/posts/yunlv/index.html">
+<meta property="og:site_name" content="Zzhr&#39;s Blog">
+<meta property="og:description" content="对于韵律识别，我们主要找到了两种处理方式。第一种是通过神经网络算法对音频信号进行训练。链接如下：参考博客（第一种方法博主提供了一个非常庞大的数据集，该算法解决的问题主要是识别环境中的不同声音，如鸟叫、汽笛、小孩打闹声等。有点类似于yolov5算法中识别环境中的人、车、房子、手机等，并不是用来进行音乐中的韵律识别。我的理解是韵律识别是音频识别中一个更小的分支，我们应该寻找一个更加精确的算法来解决问题">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/demo.JPG">
+<meta property="article:published_time" content="2023-02-25T14:16:02.004Z">
+<meta property="article:modified_time" content="2023-02-25T16:45:37.044Z">
+<meta property="article:author" content="Harry Zhang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/demo.JPG"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/posts/yunlv/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '韵律识别',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-26 00:45:37'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/demo.JPG" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Zzhr's Blog"><span class="site-name">Zzhr's Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">韵律识别</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-25T14:16:02.004Z" title="发表于 2023-02-25 22:16:02">2023-02-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-02-25T16:45:37.044Z" title="更新于 2023-02-26 00:45:37">2023-02-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%87%E8%B5%9B%E7%AC%94%E8%AE%B0/">备赛笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="韵律识别"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>对于韵律识别，我们主要找到了两种处理方式。第一种是通过神经网络算法对<strong>音频信号</strong>进行训练。链接如下：<a target="_blank" rel="noopener" href="https://github.com/yeyupiaoling/AudioClassification-Pytorch">参考博客</a>（第一种方法博主提供了一个非常庞大的数据集，该算法解决的问题主要是识别环境中的不同声音，如鸟叫、汽笛、小孩打闹声等。有点类似于yolov5算法中识别环境中的人、车、房子、手机等，并不是用来进行音乐中的韵律识别。<strong>我的理解是韵律识别是音频识别中一个更小的分支，我们应该寻找一个更加精确的算法来解决问题，而不是单纯通过音频进行判断</strong>）</p>
+<p>第二种是通过shazam算法，shazam算法主要用于<strong>听歌识曲，</strong>一般用于音乐软件识别歌曲。（这个算法的缺点在于它封装得比较好，音乐切割后都是放到数据库中，如果需要进行一些改进的话比较困难） <strong>最后比赛我们选择的是dejavu包 这个包是模仿shazam算法进行复现的</strong></p>
+<h2 id="2022年比赛韵律识别使用代码"><a href="#2022年比赛韵律识别使用代码" class="headerlink" title="2022年比赛韵律识别使用代码"></a><strong>2022年比赛韵律识别使用代码</strong></h2><p>本项目的源代码放在了博主的github中，链接如下：<a target="_blank" rel="noopener" href="https://github.com/aynakeya/SongRecogn">https://github.com/aynakeya/SongRecogn</a></p>
+<p>博主放了三篇推文介绍了shazam算法，链接如下：<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/readlist/rl54978">https://www.bilibili.com/read/readlist/rl54978</a></p>
+<p>创建数据库后，使用 <strong>mysql -u root -p</strong> 语句进入root，并输入密码。</p>
+<p>而后通过 <strong>create table song;</strong> 语句创建代码所需要的 song 数据库 。</p>
+<p>通过 <strong>use song;</strong> 语句进入‘song’ 数据库。</p>
+<p>执行代码 create_database.py。</p>
+<p>而后在终端通过 <strong>show tables；</strong> 语句查看表是否创建成功。</p>
+<p>执行代码 <strong>SongRecogn.py</strong>前，将待加入歌曲‘xxx.mp3’’放到与该<strong>py文件</strong>同一路径下，注意对该段代码进行注释和更改，最终效果如下：</p>
+<p><img src="1.png"></p>
+<p>执行 SongRecogn.py,在<strong>command</strong>:  后输入语句“<strong>add-audio xxx.mp3</strong>”。</p>
+<p>执行成功后在终端输入‘<strong>select * from songs；</strong>’检查是否插入歌曲成功（注意fingerprint的值为1）。</p>
+<p>在终端输入‘<strong>select * from fingerprinted；</strong>’查看音乐指纹是否创建成功。</p>
+<p>而后修改代码SongRecogn.py,使该段代码最终为</p>
+<p><img src="2.png"></p>
+<p>执行，录音，产生结果。</p>
+<h2 id="SQL环境配置"><a href="#SQL环境配置" class="headerlink" title="SQL环境配置"></a>SQL环境配置</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42759243/article/details/110320048?spm=1001.2014.3001.5506">参考博客</a></p>
+<h2 id="树莓派录音"><a href="#树莓派录音" class="headerlink" title="树莓派录音"></a>树莓派录音</h2><p>安装相关软件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ffmpeg omxplayer</span><br></pre></td></tr></table></figure>
+
+<p>开始录音</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arecord -D &quot;plughw:1,0&quot; -d 5 test.wav</span><br></pre></td></tr></table></figure>
+
+<p>-D的意思就是我们要选择的设备，plughw:1,0的1指的是第一个外部设备，因为树莓派内部没有声卡，所以只能使用外部的usb麦克风。<br>-d 5的意思是录制5秒的声音，最后保存为test.wav的文件。</p>
+<p>播放录制声音</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">omxplayer -o local test.wav</span><br></pre></td></tr></table></figure>
+
+<h2 id="No-module-named-‘pyaudio’"><a href="#No-module-named-‘pyaudio’" class="headerlink" title="No module named ‘pyaudio’"></a>No module named ‘pyaudio’</h2><p>事先安装portaudio库开发包（portaudio19-dev）和python开发包（python-all-dev）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install python-all-dev </span><br><span class="line"> </span><br><span class="line">sudo apt-get install portaudio19-dev</span><br></pre></td></tr></table></figure>
+
+<p>安装pyaudio</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyaudio</span><br></pre></td></tr></table></figure>
+
+<h2 id="报错error-metadata-generation-failed"><a href="#报错error-metadata-generation-failed" class="headerlink" title="报错error: metadata-generation-failed"></a>报错error: metadata-generation-failed</h2><p>类似问题pip 在安装命令中添加以下内容:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">–use-deprecated=backtrack-on-build-failures</span><br><span class="line"></span><br><span class="line">如：</span><br><span class="line">pip install selenium --use-deprecated=backtrack-on-build-failures</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="树莓派pip下载超时"><a href="#树莓派pip下载超时" class="headerlink" title="树莓派pip下载超时"></a>树莓派pip下载超时</h2><p>给pip换源和给apt-get换源是两回事儿，你给apt-get换成了清华源，用pip下载python的包时用的其实还是国外的源，不出意外应该很多东西都会下载超时。</p>
+<p>按顺序在树莓派命令行执行如下命令：</p>
+<p>sudo mkdir ~/.pip<br>1<br>cd .pip<br>1<br>sudo nano pip.conf<br>1<br>在打开的文件中输入：</p>
+<p>[global]<br>timeout = 10<br>index-url =  <a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/pypi/simple/">http://mirrors.aliyun.com/pypi/simple/</a><br>extra-index-url= <a target="_blank" rel="noopener" href="http://pypi.douban.com/simple/">http://pypi.douban.com/simple/</a><br>[install]<br>trusted-host=<br>    mirrors.aliyun.com<br>    pypi.douban.com<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>然后crtl+o，回车保存，crtl+x退出。<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44166630/article/details/112464054">参考博客</a></p>
+<h2 id="No-module-named-mysql"><a href="#No-module-named-mysql" class="headerlink" title="No module named mysql"></a>No module named mysql</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33183456/article/details/123292764">参考博客</a></p>
+<h2 id="使用Pydub库对MP3和wav进行格式互转"><a href="#使用Pydub库对MP3和wav进行格式互转" class="headerlink" title="使用Pydub库对MP3和wav进行格式互转"></a>使用Pydub库对MP3和wav进行格式互转</h2><p>pydub是python的高级一个音频处理库，可以让你以一种不那么蠢的方法处理音频。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># libav</span><br><span class="line">apt-get install libav-tools libavcodec-extra-53</span><br><span class="line"></span><br><span class="line">####    OR    #####</span><br><span class="line"></span><br><span class="line"># ffmpeg</span><br><span class="line">apt-get install ffmpeg libavcodec-extra-53</span><br></pre></td></tr></table></figure>
+
+<p>如果对于libav支持不好的话 建议使用ffmpeg</p>
+<p><a target="_blank" rel="noopener" href="https://luckystar.blog.csdn.net/article/details/119615360">ffmpeg库报错解决办法</a></p>
+<p><strong>代码封装如下</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pydub <span class="keyword">import</span> AudioSegment</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">trans_mp3_to_wav</span>(<span class="params">filepath</span>):</span><br><span class="line">    song = AudioSegment.from_mp3(filepath)</span><br><span class="line">    song.export(<span class="string">&quot;now.wav&quot;</span>, <span class="built_in">format</span>=<span class="string">&quot;wav&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Harry Zhang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/posts/yunlv/">http://example.com/posts/yunlv/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Zzhr's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/demo.JPG" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/zitai/" title="姿态识别"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">姿态识别</div></div></a></div><div class="next-post pull-right"><a href="/posts/chuanganqi/" title="传感器模块"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">传感器模块</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/demo.JPG" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Harry Zhang</div><div class="author-info__description">终将归予人海</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Curry-ZHR"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Curry-ZHR" target="_blank" title="Github"><i class="fab fa-github"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Welcome to Zzhr's Blog!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2022%E5%B9%B4%E6%AF%94%E8%B5%9B%E9%9F%B5%E5%BE%8B%E8%AF%86%E5%88%AB%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">2022年比赛韵律识别使用代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">SQL环境配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91%E8%8E%93%E6%B4%BE%E5%BD%95%E9%9F%B3"><span class="toc-number">3.</span> <span class="toc-text">树莓派录音</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#No-module-named-%E2%80%98pyaudio%E2%80%99"><span class="toc-number">4.</span> <span class="toc-text">No module named ‘pyaudio’</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%A5%E9%94%99error-metadata-generation-failed"><span class="toc-number">5.</span> <span class="toc-text">报错error: metadata-generation-failed</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91%E8%8E%93%E6%B4%BEpip%E4%B8%8B%E8%BD%BD%E8%B6%85%E6%97%B6"><span class="toc-number">6.</span> <span class="toc-text">树莓派pip下载超时</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#No-module-named-mysql"><span class="toc-number">7.</span> <span class="toc-text">No module named mysql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Pydub%E5%BA%93%E5%AF%B9MP3%E5%92%8Cwav%E8%BF%9B%E8%A1%8C%E6%A0%BC%E5%BC%8F%E4%BA%92%E8%BD%AC"><span class="toc-number">8.</span> <span class="toc-text">使用Pydub库对MP3和wav进行格式互转</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/zitai/" title="姿态识别">姿态识别</a><time datetime="2023-02-25T16:15:29.354Z" title="发表于 2023-02-26 00:15:29">2023-02-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/yunlv/" title="韵律识别">韵律识别</a><time datetime="2023-02-25T14:16:02.004Z" title="发表于 2023-02-25 22:16:02">2023-02-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/chuanganqi/" title="传感器模块">传感器模块</a><time datetime="2023-02-25T13:46:38.000Z" title="发表于 2023-02-25 21:46:38">2023-02-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ziqidong/" title="开机自启动">开机自启动</a><time datetime="2023-02-25T12:37:15.374Z" title="发表于 2023-02-25 20:37:15">2023-02-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/tongxin/" title="通信协议">通信协议</a><time datetime="2023-02-25T12:33:57.918Z" title="发表于 2023-02-25 20:33:57">2023-02-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/camera_setup/" title="摄像头部署">摄像头部署</a><time datetime="2023-02-25T12:01:10.164Z" title="发表于 2023-02-25 20:01:10">2023-02-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/yolo_setup/" title="yolo部署">yolo部署</a><time datetime="2023-02-25T11:22:00.576Z" title="发表于 2023-02-25 19:22:00">2023-02-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/raspberry_setup/" title="树莓派部署">树莓派部署</a><time datetime="2023-02-23T15:21:15.412Z" title="发表于 2023-02-23 23:21:15">2023-02-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/suanfa_3/" title="实验报告_3">实验报告_3</a><time datetime="2023-02-23T15:04:10.303Z" title="发表于 2023-02-23 23:04:10">2023-02-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/suanfa_1/" title="实验报告_1">实验报告_1</a><time datetime="2023-02-23T14:37:51.442Z" title="发表于 2023-02-23 22:37:51">2023-02-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/cunchu/" title="分区式存储管理算法模拟">分区式存储管理算法模拟</a><time datetime="2023-02-21T17:07:24.541Z" title="发表于 2023-02-22 01:07:24">2023-02-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/yemian/" title="页面调度算法模拟">页面调度算法模拟</a><time datetime="2023-02-21T17:06:14.697Z" title="发表于 2023-02-22 01:06:14">2023-02-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/zuoye/" title="作业调度">作业调度</a><time datetime="2023-02-21T15:35:28.024Z" title="发表于 2023-02-21 23:35:28">2023-02-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/55dc0e80/" title="demo1">demo1</a><time datetime="2023-02-21T15:00:56.196Z" title="发表于 2023-02-21 23:00:56">2023-02-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/4a17b156/" title="Hello World">Hello World</a><time datetime="2023-02-21T04:43:57.007Z" title="发表于 2023-02-21 12:43:57">2023-02-21</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Harry Zhang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="{&quot;site_uv&quot;:true,&quot;site_pv&quot;:true,&quot;page_pv&quot;:true}"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/%5Bobject%20Object%5D"></script></div></body></html>

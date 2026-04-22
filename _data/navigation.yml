@@ -1,0 +1,18 @@
+main:
+  - title: "About Me"
+    url: /#about
+
+  - title: "News"
+    url: /#news
+
+  - title: "Publications"
+    url: /#publications
+
+  - title: "Awards"
+    url: /#awards
+
+  - title: "Educations"
+    url: /#educations
+
+  - title: "Internships"
+    url: /#internships

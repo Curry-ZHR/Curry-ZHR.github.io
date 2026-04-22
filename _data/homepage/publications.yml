@@ -1,0 +1,11 @@
+# Publications list
+# Example:
+# - title: "Paper Title"
+#   authors: "Author A, Author B"
+#   venue: "Conference/Journal, Year"
+#   links:
+#     - label: "Paper"
+#       url: "https://..."
+#   summary: "Optional"
+[]
+

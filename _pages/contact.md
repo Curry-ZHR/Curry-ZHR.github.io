@@ -1,0 +1,14 @@
+---
+layout: profile
+title: Contact
+permalink: /contact/
+---
+
+<p class="panel-kicker">Say hello</p>
+<h1 class="content-title" id="contact-title">Let's connect.</h1>
+<p class="muted">You can find me here.</p>
+<ul class="contact-list">
+  {% if site.author.email %}<li><span>Email</span><a href="mailto:{{ site.author.email | escape }}">{{ site.author.email | escape }} ↗</a></li>{% endif %}
+  {% if site.author.github %}<li><span>Code</span><a href="https://github.com/{{ site.author.github | escape }}" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>{% endif %}
+  {% if site.author.googlescholar %}<li><span>Research</span><a href="{{ site.author.googlescholar | escape }}" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a></li>{% endif %}
+</ul>

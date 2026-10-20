@@ -1,0 +1,49 @@
+:root { color-scheme: light; color: #26323b; background: #fff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif; font-synthesis: none; text-rendering: optimizeLegibility; }
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; font-size: 16px; line-height: 1.85; background: linear-gradient(#f1f5f8 0, #fff 220px); }
+a { color: inherit; text-underline-offset: 5px; text-decoration-thickness: 1px; }
+a:hover { color: #506d83; }
+a:focus-visible { outline: 2px solid #506d83; outline-offset: 5px; }
+.wrap { width: min(920px, calc(100% - 64px)); margin-inline: auto; }
+.skip-link { position: absolute; top: -80px; left: 20px; padding: 8px 14px; z-index: 2; background: #fff; }
+.skip-link:focus { top: 10px; }
+.content-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 22px; border-bottom: 1px solid #e4e9ec; }
+.wordmark { font: 22px Georgia, "Times New Roman", serif; text-decoration: none; white-space: nowrap; }
+.content-header nav { display: flex; gap: 28px; font-size: 14px; }
+.content-header nav a { min-height: 44px; display: inline-flex; align-items: center; text-decoration: none; }
+.content-header nav a[aria-current="page"] { text-decoration: underline; }
+.content-main { width: min(720px, calc(100% - 64px)); margin-inline: auto; padding-block: 54px 72px; min-height: calc(100svh - 180px); }
+.panel-kicker { margin: 0 0 12px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #617381; }
+.content-title { margin: 0 0 30px; font-family: Georgia, "Times New Roman", serif; font-size: 42px; font-weight: 400; line-height: 1.3; letter-spacing: -.5px; }
+.content-title span { display: inline-block; margin-left: 10px; font-family: "Songti SC", serif; font-size: 19px; letter-spacing: 2px; color: #617381; }
+p { margin: 0 0 18px; }
+.detail-section { margin-top: 36px; padding-top: 28px; border-top: 1px solid #e4e9ec; scroll-margin-top: 24px; }
+h2 { margin: 0 0 18px; font-family: Georgia, "Times New Roman", serif; font-size: 26px; line-height: 1.4; font-weight: 400; }
+.record-list { margin: 0; padding-left: 20px; }
+.record-list li { overflow-wrap: anywhere; }
+.record-list li + li { margin-top: 14px; }
+.hl-red { color: inherit; font-weight: 600; }
+.muted, .publication p { color: #61707c; }
+.publication + .publication { padding-top: 26px; margin-top: 26px; border-top: 1px solid #e4e9ec; }
+.publication h2 { font-family: inherit; font-size: 19px; font-weight: 600; }
+.publication p { margin: 6px 0; }
+.publication-venue { font-style: italic; }
+.paper-links { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 12px; font-size: 14px; }
+.section-link { margin: 32px 0 0; font-size: 14px; }
+.contact-list { margin: 30px 0 0; padding: 0; list-style: none; }
+.contact-list li { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 20px; padding-block: 18px; border-top: 1px solid #e4e9ec; }
+.contact-list span { color: #61707c; font-size: 14px; }
+.contact-list a { overflow-wrap: anywhere; }
+.content-footer { display: flex; justify-content: space-between; gap: 20px; padding-block: 22px 30px; border-top: 1px solid #e4e9ec; color: #61707c; font-size: 12px; }
+.content-footer a { text-decoration: none; }
+@media (max-width: 540px) {
+  body { font-size: 15px; }
+  .wrap, .content-main { width: calc(100% - 40px); }
+  .content-header { flex-wrap: wrap; gap: 10px; padding-block: 18px; }
+  .wordmark { font-size: 20px; }
+  .content-header nav { gap: 22px; font-size: 13px; }
+  .content-main { padding-block: 36px 50px; }
+  .content-title { font-size: 34px; }
+  .content-title span { font-size: 17px; }
+  .contact-list li { grid-template-columns: 1fr; gap: 2px; }
+}

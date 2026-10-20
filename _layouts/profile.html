@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="{{ site.locale | slice: 0, 2 }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffffff">
+    <title>{{ page.title | escape }} — {{ site.title | escape }}</title>
+    <meta name="description" content="{{ page.description | default: site.description | escape }}">
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+    <meta property="og:title" content="{{ page.title | escape }} — {{ site.title | escape }}">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{{ '/images/harry-evening-lab.webp' | absolute_url }}">
+    <link rel="icon" href="{{ '/images/favicon.svg' | relative_url }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ '/assets/css/profile.css' | relative_url }}?v=1">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="content-header wrap">
+      <a class="wordmark" href="{{ '/' | relative_url }}">{{ site.name | escape }}</a>
+      <nav aria-label="Main navigation">
+        <a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>About</a>
+        <a href="{{ '/work/' | relative_url }}"{% if page.url == '/work/' %} aria-current="page"{% endif %}>Work</a>
+        <a href="{{ '/contact/' | relative_url }}"{% if page.url == '/contact/' %} aria-current="page"{% endif %}>Contact</a>
+      </nav>
+    </header>
+    <main class="content-main" id="main-content">
+      {{ content }}
+    </main>
+    <footer class="content-footer wrap">
+      <a href="{{ '/' | relative_url }}">← Back to home</a>
+      <span>&copy; {{ 'now' | date: '%Y' }} {{ site.name | escape }}</span>
+    </footer>
+  </body>
+</html>

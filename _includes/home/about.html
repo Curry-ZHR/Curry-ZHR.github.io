@@ -1,7 +1,7 @@
 <p class="panel-kicker">A little about me</p>
 <h2 class="content-title" id="about-title">{{ site.name | escape }} <span lang="zh">张华锐</span></h2>
 <div class="bio">
-  {% for paragraph in site.data.homepage.about %}<p>{{ paragraph | escape }}</p>{% endfor %}
+  {% for paragraph in site.data.homepage.about %}{{ paragraph | escape | markdownify }}{% endfor %}
 </div>
 <section class="detail-section" id="experience">
   <h3>Experience</h3>

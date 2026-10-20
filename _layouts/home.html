@@ -1,16 +1,35 @@
----
-layout: default
----
-
-{% include base_path %}
-
-<main id="main-content" class="home-page">
-  {{ content }}
-</main>
-
-<script src="https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.13/dayjs.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@ant-design/icons@5.6.1/dist/index.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/antd@5.27.3/dist/antd.min.js"></script>
-<script src="{{ base_path }}/assets/js/home.js"></script>
+<!doctype html>
+<html lang="{{ site.locale | slice: 0, 2 }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ site.title | escape }}</title>
+    <meta name="description" content="{{ page.description | default: site.description | escape }}">
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ site.title | escape }}">
+    <meta property="og:description" content="{{ page.description | default: site.description | escape }}">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:image" content="{{ '/images/hero-huarui-manga.webp' | absolute_url }}">
+    <link rel="icon" href="{{ '/images/favicon.svg' | relative_url }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}?v=minimal-1">
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header wrap">
+      <a class="wordmark" href="{{ '/' | relative_url }}">Huarui Zhang<span aria-hidden="true">.</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#publications">Work</a>
+        <a href="#experience">Experience</a>
+      </nav>
+    </header>
+    <main id="main-content" class="wrap">
+      {{ content }}
+    </main>
+    <footer class="site-footer wrap">
+      <span>&copy; {{ 'now' | date: '%Y' }} {{ site.name | escape }}</span>
+      <a href="#top">Back to top ↑</a>
+    </footer>
+  </body>
+</html>

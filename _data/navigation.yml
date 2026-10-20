@@ -2,17 +2,8 @@ main:
   - title: "About"
     url: /#about
 
-  - title: "Research"
-    url: /#research
-
-  - title: "Updates"
-    url: /#news
-
   - title: "Work"
     url: /#publications
 
-  - title: "Journey"
-    url: /#journey
-
-  - title: "Recognition"
-    url: /#awards
+  - title: "Experience"
+    url: /#experience

@@ -27,6 +27,6 @@
 <section class="detail-section" id="awards">
   <h3>Awards</h3>
   <ul class="record-list">
-    {% for item in site.data.homepage.awards %}<li>{{ item | escape }}</li>{% endfor %}
+    {% for item in site.data.homepage.awards %}<li>{{ item | escape | markdownify | remove: '<p>' | remove: '</p>' }}</li>{% endfor %}
   </ul>
 </section>

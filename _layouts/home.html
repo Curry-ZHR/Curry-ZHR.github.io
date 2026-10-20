@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#a8b9c9">
     <title>{{ site.title | escape }}</title>
     <meta name="description" content="{{ page.description | default: site.description | escape }}">
     <link rel="canonical" href="{{ page.url | absolute_url }}">
@@ -10,26 +11,18 @@
     <meta property="og:title" content="{{ site.title | escape }}">
     <meta property="og:description" content="{{ page.description | default: site.description | escape }}">
     <meta property="og:url" content="{{ page.url | absolute_url }}">
-    <meta property="og:image" content="{{ '/images/hero-huarui-manga.webp' | absolute_url }}">
+    <meta property="og:image" content="{{ '/images/harry-evening-lab.webp' | absolute_url }}">
     <link rel="icon" href="{{ '/images/favicon.svg' | relative_url }}" type="image/svg+xml">
-    <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}?v=minimal-1">
+    <link rel="preload" as="image" href="{{ '/images/harry-evening-lab.webp' | relative_url }}" media="(min-width: 701px) and (min-aspect-ratio: 1/1)">
+    <link rel="preload" as="image" href="{{ '/images/harry-evening-lab-mobile.webp' | relative_url }}" media="(max-width: 700px), (max-aspect-ratio: 1/1)">
+    <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}?v=evening-1">
+    <script defer src="{{ '/assets/js/home.js' | relative_url }}?v=evening-1"></script>
+    <noscript><style>.info-dialog:not([open]){display:block;position:relative;inset:auto;margin:24px auto;max-height:none}.dialog-close{display:none}.dialog-scroll{overflow:visible;max-height:none}.info-panel + .info-panel{margin-top:40px}</style></noscript>
   </head>
-  <body id="top">
-    <a class="skip-link" href="#main-content">Skip to content</a>
-    <header class="site-header wrap">
-      <a class="wordmark" href="{{ '/' | relative_url }}">Huarui Zhang<span aria-hidden="true">.</span></a>
-      <nav aria-label="Main navigation">
-        <a href="#about">About</a>
-        <a href="#publications">Work</a>
-        <a href="#experience">Experience</a>
-      </nav>
-    </header>
-    <main id="main-content" class="wrap">
+  <body>
+    <a class="skip-link" href="#about">Skip to about</a>
+    <main id="main-content">
       {{ content }}
     </main>
-    <footer class="site-footer wrap">
-      <span>&copy; {{ 'now' | date: '%Y' }} {{ site.name | escape }}</span>
-      <a href="#top">Back to top ↑</a>
-    </footer>
   </body>
 </html>

@@ -14,6 +14,11 @@
 <link rel="icon" href="/images/favicon.ico"/>
 <meta name="theme-color" content="#ffffff"/>
 
+{% if page.layout == "home" %}
+<link rel="preload" as="image" type="image/webp" href="{{ '/images/hero-huarui-manga.webp' | relative_url }}" fetchpriority="high"/>
+<link rel="stylesheet" href="{{ base_path }}/assets/css/home.css"/>
+{% endif %}
+
 <style>
   html {
     scroll-behavior: smooth;
@@ -33,6 +38,21 @@
 
   .home-list li {
     margin-bottom: 0.8rem;
+  }
+
+  .edu-tag {
+    display: inline-block;
+    margin-left: 0.5rem;
+    padding: 0.05rem 0.45rem;
+    border: 1px solid #555;
+    background-color: rgb(178, 204, 238);
+    border-radius: 999px;
+    font-size: 0.78em;
+    line-height: 1.5;
+    font-weight: 600;
+    color: #333;
+    vertical-align: middle;
+    white-space: nowrap;
   }
 
   .home-links a {

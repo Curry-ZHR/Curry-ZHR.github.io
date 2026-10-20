@@ -9,10 +9,10 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
-title                    : "Harry's Homepage"
+title                    : "Huarui Zhang"
 title_separator          : "-"
 name                     : &name "Huarui Zhang"
-description              : &description "Your Name's academic portfolio"   # Update this with a general description of your site, this is the default if not overridden by a page
+description              : &description "MPhil researcher in embodied AI, humanoid robotics, and world models."   # Update this with a general description of your site, this is the default if not overridden by a page
 url                      : "https://curry-zhr.github.io" # GitHub Pages site URL (not repository URL)
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -26,8 +26,8 @@ author:
   avatar           : "profile.png"
   name             : "Harry Zhang"
   pronouns         : "He/Him"
-  bio              : "An undergraduate from CCNU. A Mphil study in HKUST(GZ). "
-  location         : "Shenzhen,China"
+  bio              : "MPhil student at HKUST(GZ), working on embodied AI and humanoid robotics."
+  location         : "Shenzhen, China"
   employer         : "HKUST(GZ)"
   uri              : # URL
   email            : "hrzzhang947@gmail.com" 
@@ -51,7 +51,7 @@ author:
   bitbucket        : # Username - Update with your username on the site
   codepen          : # Username
   dribbble         : # Username
-  github           : "https://github.com/Curry-ZHR"
+  github           : "Curry-ZHR"
   kaggle           : # Username  
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 

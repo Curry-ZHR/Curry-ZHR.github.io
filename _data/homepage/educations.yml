@@ -1,5 +1,8 @@
 # Educations list
 # Example:
-# - "Degree, University, Year-Year"
-- "Bachelor, Central China Normal University, 2020-2024"
-- "Mphil, The Hong Kong University of Science and Technology(GuangZhou), 2025-2027"
+# - text: "Degree, University, Year-Year"
+#   tag: "Optional Tag"
+- text: "Bachelor, Central China Normal University, 2020-2024"
+  tag: "211"
+- text: "Mphil, The Hong Kong University of Science and Technology(GuangZhou), 2025-2027"
+  tag: "QS50"

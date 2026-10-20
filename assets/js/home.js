@@ -1,11 +1,7 @@
 (function () {
   "use strict";
-  // Keep previously shared section URLs working with the new content pages.
-  var routes = {
-    about: "about/", experience: "about/#experience", educations: "about/#educations",
-    awards: "about/#awards", journey: "about/#experience", internships: "about/#experience",
-    research: "about/", publications: "work/", work: "work/", news: "work/", contact: "contact/"
-  };
-  var target = routes[window.location.hash.slice(1)];
-  if (target) window.location.replace(new URL(target, window.location.href).href);
+  // Older shared hashes continue to point to sections of this same page.
+  var aliases = { work: "publications", journey: "experience", internships: "experience", research: "about" };
+  var target = aliases[window.location.hash.slice(1)];
+  if (target) window.location.replace("#" + target);
 })();

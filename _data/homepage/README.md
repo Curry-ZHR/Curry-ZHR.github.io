@@ -1,6 +1,6 @@
 # Homepage Data Folder
 
-Only edit these 6 files:
+Homepage content is maintained in these files:
 
 - `_data/homepage/about.yml`
 - `_data/homepage/news.yml`
@@ -8,6 +8,7 @@ Only edit these 6 files:
 - `_data/homepage/awards.yml`
 - `_data/homepage/educations.yml`
 - `_data/homepage/internships.yml`
+- `_data/homepage/patents.yml`
 
 Homepage will read them as:
 
@@ -17,3 +18,4 @@ Homepage will read them as:
 - `site.data.homepage.awards`
 - `site.data.homepage.educations`
 - `site.data.homepage.internships`
+- `site.data.homepage.patents`

@@ -93,3 +93,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 72px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+.experience-highlights { margin: 10px 0 0; padding-left: 20px; color: #52616d; font-size: .94em; }
+.experience-patents { margin-top: 28px; }
+.experience-patents h4 { margin: 0 0 12px; font-size: 15px; font-weight: 600; }

@@ -16,16 +16,6 @@
     </li>
     {% endfor %}
   </ul>
-  {% if site.data.homepage.patents.size > 0 %}
-  <div class="experience-patents">
-    <h4>Invention patent</h4>
-    <ul class="record-list">
-      {% for patent in site.data.homepage.patents %}
-      <li><span lang="zh">{{ patent.title | escape }}</span><br><span class="muted">Chinese invention patent · {{ patent.number | escape }}</span></li>
-      {% endfor %}
-    </ul>
-  </div>
-  {% endif %}
 </section>
 <section class="detail-section" id="educations">
   <h3>Education</h3>

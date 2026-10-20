@@ -1,9 +1,10 @@
 <p class="panel-kicker">Research &amp; projects</p>
 <h2 class="content-title" id="work-title">Selected work</h2>
 {% if site.data.homepage.publications.size > 0 %}
-<div class="publication-list">
+<div class="publication-list work-cards">
   {% for pub in site.data.homepage.publications %}
-  <article class="publication">
+  <article class="publication work-card">
+    {% if pub.status %}<span class="work-status">[{{ pub.status | escape }}]</span>{% endif %}
     <h3>{{ pub.title | escape }}</h3>
     {% if pub.authors %}<p>{{ pub.authors }}</p>{% endif %}
     {% if pub.venue %}<p class="publication-venue">{{ pub.venue | escape }}</p>{% endif %}

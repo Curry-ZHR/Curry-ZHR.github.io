@@ -1,11 +1,15 @@
-# Publications list
-# Example:
-# - title: "Paper Title"
-#   authors: "Author A, Author B"
-#   venue: "Conference/Journal, Year"
-#   links:
-#     - label: "Paper"
-#       url: "https://..."
-#   summary: "Optional"
-[]
+- title: "RoboMemArena: A Comprehensive and Challenging Robotic Memory Benchmark"
+  status: "preprint"
+  summary: "A benchmark for memory-dependent robotic manipulation, spanning 26 long-horizon tasks with keyframe annotations and real-world evaluation. The accompanying PrediMem framework combines memory-guided planning with a VLA policy to study how robots retain and use task-relevant history."
+  links:
+    - label: "Project"
+      url: "https://robomemarena.github.io/"
+    - label: "Paper"
+      url: "https://arxiv.org/abs/2605.10921"
 
+- title: "EnvTrap: Revealing the Environment-Only Attack Surface in Embodied AI via Consequence-Blind Action Execution"
+  status: "NeurIPS 2026"
+  summary: "A diagnostic framework for evaluating how changes in the physical environment can cause unsafe actions in embodied models, without altering instructions or accessing model internals. Paired safe and trap scenarios reveal gaps in predicting action consequences and motivate a consequence-aware defense."
+  links:
+    - label: "Paper"
+      url: "https://openreview.net/forum?id=Dn8mqYHQ8S"

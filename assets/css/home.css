@@ -95,5 +95,16 @@ html { scroll-behavior: smooth; scroll-padding-top: 72px; }
 }
 
 .experience-highlights { margin: 10px 0 0; padding-left: 20px; color: #52616d; font-size: .94em; }
-.experience-patents { margin-top: 28px; }
-.experience-patents h4 { margin: 0 0 12px; font-size: 15px; font-weight: 600; }
+
+.work-cards { display: grid; gap: 20px; }
+.work-card { min-width: 0; padding: 28px; border: 1px solid #dfe6eb; border-radius: 10px; background: linear-gradient(135deg, #f7f9fb, #fff 65%); }
+.work-card + .work-card { margin-top: 0; padding-top: 28px; border-top: 1px solid #dfe6eb; }
+.work-status { display: inline-block; margin-bottom: 12px; color: #577083; font-size: 12px; font-weight: 600; letter-spacing: .025em; }
+.content-section .work-card h3 { margin-bottom: 14px; font-family: inherit; font-size: 20px; font-weight: 600; line-height: 1.5; overflow-wrap: anywhere; }
+.content-section .work-card p { margin: 0; font-size: 15px; line-height: 1.8; }
+.work-card .paper-links { margin-top: 20px; gap: 20px; }
+@media (max-width: 540px) {
+  .work-card, .work-card + .work-card { padding: 22px 20px; }
+  .content-section .work-card h3 { font-size: 18px; }
+  .content-section .work-card p { font-size: 14px; }
+}

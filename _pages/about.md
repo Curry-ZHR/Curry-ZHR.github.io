@@ -15,6 +15,7 @@ author_profile: false
     <p class="scene-subtitle">Robotics &amp; Embodied AI</p>
     <nav class="scene-nav" aria-label="Main navigation">
       <a href="#about">About</a>
+      <a href="#cv">CV</a>
       <a href="#publications">Work</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -26,6 +27,7 @@ author_profile: false
     <a class="wordmark" href="#top">{{ site.name | escape }}</a>
     <div class="section-links">
       <a href="#about">About</a>
+      <a href="#cv">CV</a>
       <a href="#publications">Work</a>
       <a href="#contact">Contact</a>
     </div>

@@ -30,3 +30,7 @@
     {% for item in site.data.homepage.awards %}<li>{{ item | escape | markdownify | remove: '<p>' | remove: '</p>' }}</li>{% endfor %}
   </ul>
 </section>
+<section class="detail-section" id="cv" aria-labelledby="cv-title">
+  <h3 id="cv-title">CV</h3>
+  <a class="resume-link" href="{{ '/files/harry-zhang-resume.pdf' | relative_url }}" target="_blank" rel="noopener noreferrer">Download Resume ↓</a>
+</section>

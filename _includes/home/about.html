@@ -21,7 +21,7 @@
   <h3>Education</h3>
   <ul class="record-list">
     {% assign education = site.data.homepage.educations | reverse %}
-    {% for item in education %}<li>{% if item.text %}{{ item.text | escape }}{% else %}{{ item | escape }}{% endif %}</li>{% endfor %}
+    {% for item in education %}<li>{% if item.text %}{{ item.text | escape | markdownify | remove: '<p>' | remove: '</p>' }}{% else %}{{ item | escape }}{% endif %}</li>{% endfor %}
   </ul>
 </section>
 <section class="detail-section" id="awards">
